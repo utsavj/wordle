@@ -1,0 +1,23 @@
+<div class="keyboard-container">
+    <div class="keyboard-line keyboard-line-1">
+        <button
+            class="keyboard-btn {{btn}}"
+            *ngFor="let btn of keyboardBtnLine1"
+            type="button"
+            (click)="keyboardBtnClicked(btn)">{{btn}}</button>
+    </div>
+    <div class="keyboard-line keyboard-line-2">
+        <button
+            class="keyboard-btn {{btn}}"
+            *ngFor="let btn of keyboardBtnLine2"
+            type="button"
+            (click)="keyboardBtnClicked(btn)">{{btn}}</button>
+    </div>
+    <div class="keyboard-line keyboard-line-3">
+        <button
+            class="keyboard-btn {{btn}}"
+            *ngFor="let btn of keyboardBtnLine3"
+            type="button"
+            (click)="keyboardBtnClicked(btn)">{{btn}}</button>
+    </div>
+</div>

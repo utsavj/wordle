@@ -1,0 +1,13 @@
+<div class="grid-wrapper">
+    <div class="grid-container">
+        <ng-container *ngFor="let row of gridSize; let rowIndex = index;"> 
+            <div class="grid-row grid-row-{{rowIndex}}">
+                <div
+                    *ngFor="let rowItem of gridSize; let rowItemIndex = index;"
+                    class="row-item row-item-{{rowItemIndex}}"
+                >{{this.grid[rowIndex] && this.grid[rowIndex][rowItemIndex]
+                    ? this.grid[rowIndex][rowItemIndex] : ""}}</div>
+            </div>
+        </ng-container>
+    </div>
+</div>
