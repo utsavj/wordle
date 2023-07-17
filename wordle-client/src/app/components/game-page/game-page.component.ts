@@ -79,8 +79,10 @@ export class GamePageComponent implements OnInit {
             }
           });
         }
-        this.grid.push([]);
-        this.activeGridRow++;
+        if (activeRow.length <= 5) {
+          this.grid.push([]);
+          this.activeGridRow++;
+        }
       }
     }
   }
