@@ -11,10 +11,12 @@ export class WordleGridComponent implements OnInit {
   @Input() public grid: [string[]] = [[]];
   @Input() public colorGrid: [string[]] = [[]];
 
-  public gridSize;
+  public gridWidth: number[];
+  public gridHeight: number[];
   
   constructor() { 
-    this.gridSize = Array(5).fill(0).map((x,i)=>i);
+    this.gridWidth = Array(5).fill(0).map((x,i)=>i);
+    this.gridHeight = Array(6).fill(0).map((x,i)=>i);
   }
 
   ngOnInit() {

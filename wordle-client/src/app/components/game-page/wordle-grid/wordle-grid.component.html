@@ -1,9 +1,9 @@
 <div class="grid-wrapper">
     <div class="grid-container">
-        <ng-container *ngFor="let row of gridSize; let rowIndex = index;"> 
+        <ng-container *ngFor="let row of gridHeight; let rowIndex = index;"> 
             <div class="grid-row grid-row-{{rowIndex}}">
                 <div
-                    *ngFor="let rowItem of gridSize; let rowItemIndex = index;"
+                    *ngFor="let rowItem of gridWidth; let rowItemIndex = index;"
                     class="row-item row-item-{{rowItemIndex}} {{colorGrid[rowIndex][rowItemIndex]}}"
                 >{{grid[rowIndex] && grid[rowIndex][rowItemIndex]
                     ? grid[rowIndex][rowItemIndex] : ""}}</div>

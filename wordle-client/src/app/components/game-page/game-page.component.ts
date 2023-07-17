@@ -32,7 +32,7 @@ export class GamePageComponent implements OnInit {
   ngOnInit() {
     this.wordleWord = this.allowedWords[Math.floor(Math.random()*(this.allowedWords.length - 1))];
     console.log(this.wordleWord);
-    this.colorGrid = this.createColorGrid(5, 5, "");
+    this.colorGrid = this.createColorGrid(6, 5, "");
   }
 
   @HostListener('document:keydown', ['$event'])
