@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { allowedWords } from "D:/Projects/Wordle/wordle-client/src/words";
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import { SuccessDialogComponent } from "./success-dialog/success-dialog.component";
