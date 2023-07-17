@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { allowedWords } from "D:/Projects/Wordle/wordle-client/src/words";
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import { SuccessDialogComponent } from "./success-dialog/success-dialog.component";
@@ -31,6 +31,20 @@ export class GamePageComponent implements OnInit {
     this.wordleWord = this.allowedWords[Math.floor(Math.random()*(this.allowedWords.length - 1))];
     console.log(this.wordleWord);
     this.colorGrid = this.createColorGrid(5, 5, "");
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    switch (event.key) {
+      case "Enter":
+        this.checkGuessWord();
+        break;
+      case "Backspace":
+        this.clearLastCharacter();
+        break;
+      default:
+        this.updateCharacterList(event.key);
+    }
   }
 
   public updateCharacterList(enteredCharacter: string) {
