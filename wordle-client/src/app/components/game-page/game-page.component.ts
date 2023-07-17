@@ -4,6 +4,7 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angula
 import { SuccessDialogComponent } from "./success-dialog/success-dialog.component";
 import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
 
+const REGEX_ALPHABET = "/^[A-Za-z]+$/";
 @Component({
   selector: "app-game-page",
   templateUrl: "./game-page.component.html",
@@ -45,7 +46,9 @@ export class GamePageComponent implements OnInit {
         this.clearLastCharacter();
         break;
       default:
-        this.updateCharacterList(event.key);
+        if (this.isAlphabet(event.key.toLowerCase())) {
+          this.updateCharacterList(event.key);
+        }
     }
   }
 
@@ -115,5 +118,9 @@ export class GamePageComponent implements OnInit {
 
   public openUnsuccessSnackbar(message: string, action: string, config: MatSnackBarConfig) {
     this.snackBar.open(message, action, config);
+  }
+
+  public isAlphabet(key: string) {
+    return key >= 'a' && key <= 'z' && key.length == 1;
   }
 }
