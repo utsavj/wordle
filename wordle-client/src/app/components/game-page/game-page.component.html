@@ -1,7 +1,8 @@
 <app-wordle-grid
     [grid]="grid"
     [colorGrid]="colorGrid"></app-wordle-grid>
-<app-keyboard 
+<app-keyboard
+    [incorrectLetters]="incorrectLetters"
     (enteredCharacterEmitter)="updateCharacterList($event)"
     (checkGuessWordEmitter)="checkGuessWord()"
     (clearLastCharacterEmitter)="clearLastCharacter()">

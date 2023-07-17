@@ -19,12 +19,14 @@ export class GamePageComponent implements OnInit {
   public allowedWords = allowedWords;
   public wordleWord: string = "";
   public guessedCorrect: boolean = false;
+  public incorrectLetters: Map<string, string>;
 
 
   constructor(
     public dialog: MatDialog,
-    public snackBar: MatSnackBar) { 
-    
+    public snackBar: MatSnackBar
+  ) { 
+      this.incorrectLetters = new Map<string, string>();
   }
 
   ngOnInit() {
@@ -63,7 +65,6 @@ export class GamePageComponent implements OnInit {
         if (this.wordleWord === activeRow.join('').toLowerCase()) {
           this.guessedCorrect = true;
           this.colorGrid[this.activeGridRow].forEach(letter => letter = "correct-pos");
-          console.log(this.guessedCorrect);
           this.openSuccessDialog();
         } else {
           let indexOfCorrectLetter: number = -1;
@@ -76,6 +77,10 @@ export class GamePageComponent implements OnInit {
 
             if (activeRow[indexOfCorrectLetter] === letter) {
               this.colorGrid[this.activeGridRow][indexOfCorrectLetter] = "correct-pos";
+            }
+
+            if (indexOfCorrectLetter == -1) {
+              this.incorrectLetters.set(letter.toUpperCase(), "incorrect-guess");
             }
           });
         }

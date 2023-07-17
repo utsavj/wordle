@@ -24,6 +24,10 @@
                 height: 54px;
                 aspect-ratio: auto;
             }
+            
+            &.incorrect-guess {
+                background-color: #686868;
+            }
         }
     }
 }

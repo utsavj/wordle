@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
 @Component({
   selector: "app-keyboard",
@@ -8,6 +8,7 @@ import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 
 export class KeyboardComponent implements OnInit {
 
+  @Input() public incorrectLetters: Map<string, string> = new Map<string, string>();
   @Output() public enteredCharacterEmitter: EventEmitter<string> = new EventEmitter<string>;
   @Output() public checkGuessWordEmitter: EventEmitter<any> = new EventEmitter<any>;
   @Output() public clearLastCharacterEmitter: EventEmitter<any> = new EventEmitter<any>;
