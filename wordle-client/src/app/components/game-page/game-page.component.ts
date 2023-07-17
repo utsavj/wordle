@@ -28,6 +28,7 @@ export class GamePageComponent implements OnInit {
     public snackBar: MatSnackBar
   ) { 
       this.incorrectLetters = new Map<string, string>();
+      this.guessedCorrect = false;
   }
 
   ngOnInit() {
@@ -38,17 +39,19 @@ export class GamePageComponent implements OnInit {
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    switch (event.key) {
-      case "Enter":
-        this.checkGuessWord();
-        break;
-      case "Backspace":
-        this.clearLastCharacter();
-        break;
-      default:
-        if (this.isAlphabet(event.key.toLowerCase())) {
-          this.updateCharacterList(event.key);
-        }
+    if (!this.guessedCorrect) {
+      switch (event.key) {
+        case "Enter":
+          this.checkGuessWord();
+          break;
+        case "Backspace":
+          this.clearLastCharacter();
+          break;
+        default:
+          if (this.isAlphabet(event.key.toLowerCase())) {
+            this.updateCharacterList(event.key);
+          }
+      }
     }
   }
 

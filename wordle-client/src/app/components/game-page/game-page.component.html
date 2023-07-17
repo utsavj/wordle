@@ -3,6 +3,7 @@
     [colorGrid]="colorGrid"></app-wordle-grid>
 <app-keyboard
     [incorrectLetters]="incorrectLetters"
+    [guessedCorrect]="guessedCorrect"
     (enteredCharacterEmitter)="updateCharacterList($event)"
     (checkGuessWordEmitter)="checkGuessWord()"
     (clearLastCharacterEmitter)="clearLastCharacter()">
