@@ -33,6 +33,20 @@ export class GamePageComponent implements OnInit {
     this.colorGrid = this.createColorGrid(5, 5, "");
   }
 
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    switch (event.key) {
+      case "Enter":
+        this.checkGuessWord();
+        break;
+      case "Backspace":
+        this.clearLastCharacter();
+        break;
+      default:
+        this.updateCharacterList(event.key);
+    }
+  }
+
   public updateCharacterList(enteredCharacter: string) {
     if (this.grid[this.activeGridRow].length < 5) {
       this.grid[this.activeGridRow].push(enteredCharacter);
