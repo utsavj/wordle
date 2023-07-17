@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from "@angular/core";
 import { allowedWords } from "D:/Projects/Wordle/wordle-client/src/words";
+import { wordleWords } from "D:/Projects/Wordle/wordle-client/src/wordleWords";
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import { SuccessDialogComponent } from "./success-dialog/success-dialog.component";
 import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
@@ -21,6 +22,7 @@ export class GamePageComponent implements OnInit {
   public wordleWord: string = "";
   public guessedCorrect: boolean = false;
   public incorrectLetters: Map<string, string>;
+  public wordleWords = wordleWords;
 
 
   constructor(
@@ -32,7 +34,7 @@ export class GamePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.wordleWord = this.allowedWords[Math.floor(Math.random()*(this.allowedWords.length - 1))];
+    this.wordleWord = this.wordleWords[Math.floor(Math.random()*(this.wordleWords.length - 1))];
     console.log(this.wordleWord);
     this.colorGrid = this.createColorGrid(6, 5, "");
   }
