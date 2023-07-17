@@ -9,6 +9,7 @@ import { Component, Input, OnInit } from "@angular/core";
 export class WordleGridComponent implements OnInit {
 
   @Input() public grid: [string[]] = [[]];
+  @Input() public colorGrid: [string[]] = [[]];
 
   public gridSize;
   

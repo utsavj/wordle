@@ -4,9 +4,9 @@
             <div class="grid-row grid-row-{{rowIndex}}">
                 <div
                     *ngFor="let rowItem of gridSize; let rowItemIndex = index;"
-                    class="row-item row-item-{{rowItemIndex}}"
-                >{{this.grid[rowIndex] && this.grid[rowIndex][rowItemIndex]
-                    ? this.grid[rowIndex][rowItemIndex] : ""}}</div>
+                    class="row-item row-item-{{rowItemIndex}} {{colorGrid[rowIndex][rowItemIndex]}}"
+                >{{grid[rowIndex] && grid[rowIndex][rowItemIndex]
+                    ? grid[rowIndex][rowItemIndex] : ""}}</div>
             </div>
         </ng-container>
     </div>

@@ -8,7 +8,9 @@ import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 
 export class KeyboardComponent implements OnInit {
 
-  @Output() public enteredCharacter: EventEmitter<string> = new EventEmitter<string>;
+  @Output() public enteredCharacterEmitter: EventEmitter<string> = new EventEmitter<string>;
+  @Output() public checkGuessWordEmitter: EventEmitter<any> = new EventEmitter<any>;
+  @Output() public clearLastCharacterEmitter: EventEmitter<any> = new EventEmitter<any>;
 
   public keyboardBtnLine1 = ["Q","W","E","R","T","Y","U","I","O","P"];
   public keyboardBtnLine2 = ["A","S","D","F","G","H","J","K","L"];
@@ -23,6 +25,24 @@ export class KeyboardComponent implements OnInit {
   }
 
   public keyboardBtnClicked(btn: string) {
-    this.enteredCharacter.emit(btn);
+    switch (btn) {
+      case "ENTER":
+        this.checkGuessWord();
+        break;
+      case "CLEAR":
+          this.clearLastCharacter();
+          break;
+      default: 
+        this.enteredCharacterEmitter.emit(btn);
+        break;
+    }
+  }
+
+  public checkGuessWord() {
+    this.checkGuessWordEmitter.emit();
+  }
+
+  public clearLastCharacter() {
+    this.clearLastCharacterEmitter.emit();
   }
 }

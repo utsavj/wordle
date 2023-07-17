@@ -35,6 +35,14 @@
                 font-family: 'Courier New', Courier, monospace;
                 font-weight: 700;
             }
+
+            .correct-pos {
+                background-color: green;
+            }
+
+            .character-present {
+                background-color: blue;
+            }
         }
     }
 }
