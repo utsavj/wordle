@@ -128,4 +128,12 @@ export class GamePageComponent implements OnInit {
   public isAlphabet(key: string) {
     return key >= 'a' && key <= 'z' && key.length == 1;
   }
+
+  public generateArrayFromString(word: string): string[] {
+    let wordArray: string[] = [];
+    for (let i = 0; i < word.length; i++) {
+      wordArray.push(word[i]);
+    }
+    return wordArray;
+  }
 }
