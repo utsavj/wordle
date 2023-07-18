@@ -76,16 +76,29 @@ export class GamePageComponent implements OnInit {
           this.openSuccessDialog();
         } else {
           let indexOfCorrectLetter: number = -1;
+          const wordleArray: string[]= this.generateArrayFromString(this.wordleWord);
+
           activeRow.forEach((letter: string, indexInGuessWord: number) => {
-            indexOfCorrectLetter = this.wordleWord.indexOf(letter.toLowerCase());
+            indexOfCorrectLetter = wordleArray.indexOf(letter.toLowerCase());
 
-            if (indexOfCorrectLetter >= 0) {
-              this.colorGrid[this.activeGridRow][indexInGuessWord] = "character-present"
-            }
-
-            if (activeRow[indexOfCorrectLetter] === letter) {
+            if (indexOfCorrectLetter >= 0 && wordleArray[indexInGuessWord] === letter) {
+              wordleArray[indexOfCorrectLetter] = "";
               this.colorGrid[this.activeGridRow][indexOfCorrectLetter] = "correct-pos";
             }
+          });
+
+          activeRow.forEach((letter: string, indexInGuessWord: number) => {
+            indexOfCorrectLetter = wordleArray.indexOf(letter.toLowerCase());
+
+            if (indexOfCorrectLetter >= 0
+              && this.colorGrid[this.activeGridRow][indexInGuessWord] != "correct-pos") {
+              wordleArray[indexOfCorrectLetter] = "";
+              this.colorGrid[this.activeGridRow][indexInGuessWord] = "character-present"
+            }
+          });
+
+          activeRow.forEach((letter: string, indexInGuessWord: number) => {
+            indexOfCorrectLetter = this.wordleWord.indexOf(letter.toLowerCase());
 
             if (indexOfCorrectLetter == -1) {
               this.incorrectLetters.set(letter.toUpperCase(), "incorrect-guess");
