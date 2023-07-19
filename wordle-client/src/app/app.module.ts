@@ -9,6 +9,8 @@ import { KeyboardComponent } from './components/game-page/keyboard/keyboard.comp
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -16,14 +18,16 @@ import { MatSnackBarModule} from '@angular/material/snack-bar';
     AppComponent,
     WordleGridComponent,
     KeyboardComponent,
-    GamePageComponent
+    GamePageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,54 @@
+.play-btn-wrapper {
+    display: flex;
+    justify-content: center;
+
+    .play-btn {
+        width: 120px;
+        background-color: #f5f5f5f5;
+        border-radius: 20px;
+        background-color: darkcyan;
+    }
+}
+
+.nav-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
+    gap: 10px;
+
+    .login-btn {
+        width: 120px;
+        background-color: #f5f5f5f5;
+        border-radius: 20px;
+    }
+
+    .how-to-play-btn{
+        width: 120px;
+        background-color: #f5f5f5f5;
+        border-radius: 20px;
+    }
+
+    .play-btn {
+        width: 120px;
+        background-color: #f5f5f5f5;
+        border-radius: 20px;
+        background-color: darkcyan;
+
+        .play-icon {
+            vertical-align: middle;
+        }
+    }
+}
+
+.greetings {
+    margin-left: 30px;
+    line-height: 68px;
+}
+
+.greeting-line-1 {
+    font-size: 68px
+}
+
+.greeting-line-2 {
+    font-size: 42px;
+}
