@@ -8,3 +8,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .cdk-global-scrollblock {
     overflow-y: auto;
 }
+
+body {
+    color: #f5f5f5f5;
+}
+
+app-success-dialog {
+    color: #000000;
+}

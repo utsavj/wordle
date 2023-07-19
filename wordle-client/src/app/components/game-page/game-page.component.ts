@@ -68,7 +68,7 @@ export class GamePageComponent implements OnInit {
     
     if(activeRow.length === 5) {
       if (!this.allowedWords.includes(activeRow.join('').toLowerCase())) {
-        this.openUnsuccessSnackbar("Not in word list", "OK", {duration: 2000});
+        this.openUnsuccessSnackbar("Not in word list", "OK", {duration: 2000, verticalPosition: "top"});
       } else {
         if (this.wordleWord === activeRow.join('').toLowerCase()) {
           this.guessedCorrect = true;
