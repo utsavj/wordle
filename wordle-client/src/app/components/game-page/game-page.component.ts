@@ -72,7 +72,9 @@ export class GamePageComponent implements OnInit {
       } else {
         if (this.wordleWord === activeRow.join('').toLowerCase()) {
           this.guessedCorrect = true;
-          this.colorGrid[this.activeGridRow].forEach(letter => letter = "correct-pos");
+          this.grid[this.activeGridRow].forEach((letter, index) => {
+            this.colorGrid[this.activeGridRow][index] = "correct-pos";
+          });
           this.openSuccessDialog();
         } else {
           let indexOfCorrectLetter: number = -1;
@@ -83,7 +85,7 @@ export class GamePageComponent implements OnInit {
 
             if (indexOfCorrectLetter >= 0 && wordleArray[indexInGuessWord] === letter) {
               wordleArray[indexOfCorrectLetter] = "";
-              this.colorGrid[this.activeGridRow][indexOfCorrectLetter] = "correct-pos";
+              this.colorGrid[this.activeGridRow][indexInGuessWord] = "correct-pos";
             }
           });
 
