@@ -11,6 +11,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { MatButtonModule } from '@angular/material/button';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
     WordleGridComponent,
     KeyboardComponent,
     GamePageComponent,
-    HomePageComponent
+    HomePageComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
