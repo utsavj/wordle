@@ -10,10 +10,12 @@ header {
     .instruction-icon {
         justify-content: flex-end;
         margin-left: auto;
-        margin-right: 0px
+        margin-right: 0px;
+        cursor: pointer;
     }
     .user-acccount-icon {
         margin-right: 10px;
+        cursor: pointer;
     }
 }
 main {
