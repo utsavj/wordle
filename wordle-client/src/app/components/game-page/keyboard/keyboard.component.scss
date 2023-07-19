@@ -1,6 +1,7 @@
 .keyboard-container {
     text-align: center;
     margin-bottom: 5px;
+    margin-top: 13px;
 
     .keyboard-line {
         display: flex;
@@ -11,7 +12,7 @@
         .keyboard-btn {
             height: 54px;
             aspect-ratio: 34/54;
-            background-color: #989898;
+            background-color: darkcyan;
             border: none;
             border-radius: 5px;
             cursor: pointer;
