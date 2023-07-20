@@ -4,7 +4,7 @@
 </div>
 
 <div class="nav-btn-wrapper">
-    <button mat-button class="login-btn">Login</button>
+    <button mat-button (click)="openLoginDialog()" class="login-btn">Login</button>
     <button mat-button class="how-to-play-btn">How to play?</button>
     <a routerLink="/play" routerLinkActive="active">
         <button mat-button class="play-btn">

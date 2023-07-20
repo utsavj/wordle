@@ -12,6 +12,12 @@ import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { MatButtonModule } from '@angular/material/button';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { LoginSignupComponent } from './components/home-page/login-signup/login-signup.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { LogoutComponent } from './components/home-page/logout/logout.component';
 
 
 @NgModule({
@@ -21,7 +27,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     KeyboardComponent,
     GamePageComponent,
     HomePageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginSignupComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +37,12 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     BrowserAnimationsModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

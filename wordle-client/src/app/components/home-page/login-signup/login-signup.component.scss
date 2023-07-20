@@ -1,0 +1,15 @@
+.name-field-wrapper,
+.email-field-wrapper,
+.password-field-wrapper,
+.login-btn-wrapper,
+.signup-btn-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 300px;
+}

@@ -1,0 +1,53 @@
+<div class="login-container">
+    <mat-tab-group>
+        <mat-tab label="Login">
+            <form [formGroup]="loginForm">
+                <div class="email-field-wrapper">
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput [formControl]="email" required>
+                        <mat-error *ngIf="email.invalid">{{errorMsg}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="password-field-wrapper">
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput [formControl]="password" required>
+                        <mat-error *ngIf="password.invalid">{{errorMsg}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="login-btn-wrapper">
+                    <button mat-raised-button (click)="LogInReq()">Log In</button>
+                </div>
+            </form>
+        </mat-tab>
+        <mat-tab label="Sign up">
+            <form [formGroup]="signupForm">
+                <div class="name-field-wrapper">
+                    <mat-form-field>
+                        <mat-label>What's your name?</mat-label>
+                        <input matInput [formControl]="name" required>
+                        <mat-error *ngIf="name.invalid">{{errorMsg}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div  class="email-field-wrapper">
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput [formControl]="email" required>
+                        <mat-error *ngIf="email.invalid">{{errorMsg}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="password-field-wrapper">
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput [formControl]="password" required>
+                        <mat-error *ngIf="password.invalid">{{errorMsg}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="signup-btn-wrapper">
+                    <button mat-raised-button (click)="SignUpReq()">Sign Up</button>
+                </div>
+            </form>
+        </mat-tab>
+    </mat-tab-group>
+</div>
