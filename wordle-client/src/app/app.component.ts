@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LogoutComponent } from './components/home-page/logout/logout.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'wordle';
+
+  constructor(
+    public dialog: MatDialog
+  ) {
+
+  }
+
+  public openLogoutComponent() {
+    this.dialog.open(LogoutComponent, {panelClass: "logoutDialog"});
+  }
 }
