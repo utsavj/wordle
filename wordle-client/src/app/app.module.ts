@@ -18,6 +18,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LogoutComponent } from './components/home-page/logout/logout.component';
+import { InstructionsComponent } from './components/instructions/instructions.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { LogoutComponent } from './components/home-page/logout/logout.component'
     HomePageComponent,
     PageNotFoundComponent,
     LoginSignupComponent,
-    LogoutComponent
+    LogoutComponent,
+    InstructionsComponent
   ],
   imports: [
     BrowserModule,

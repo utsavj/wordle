@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { LoginSignupComponent } from "./login-signup/login-signup.component";
+import { InstructionsComponent } from "../instructions/instructions.component";
 
 @Component({
   selector: "app-home-page",
@@ -22,5 +23,9 @@ export class HomePageComponent implements OnInit {
 
   public openLoginDialog() {
     this.dialog.open(LoginSignupComponent);
+  }
+
+  public openInstructionsDialog() {
+    this.dialog.open(InstructionsComponent);
   }
 }

@@ -1,6 +1,6 @@
 <header>
   <span class="header-title"><a routerLink="/home" routerLinkActive="active">Wordle</a></span>
-  <span class="material-symbols-outlined instruction-icon">
+  <span (click)="openInstructionsComponent()" class="material-symbols-outlined instruction-icon">
     help
   </span>
   <span (click)="openLogoutComponent()" class="material-symbols-outlined user-acccount-icon" id="user-account-icon">

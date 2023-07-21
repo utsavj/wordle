@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LogoutComponent } from './components/home-page/logout/logout.component';
+import { InstructionsComponent } from './components/instructions/instructions.component';
 
 @Component({
   selector: 'app-root',
@@ -18,5 +19,9 @@ export class AppComponent {
 
   public openLogoutComponent() {
     this.dialog.open(LogoutComponent, {panelClass: "logoutDialog"});
+  }
+
+  public openInstructionsComponent() {
+    this.dialog.open(InstructionsComponent);
   }
 }
