@@ -23,7 +23,7 @@ namespace wordle_backend.Controllers
             return Ok(result);
         }
 
-        [HttpPost("User")]
+        [HttpPost("signup")]
         public async Task<ActionResult> CreateUser(UserModel user)
         {
             await _userHelper.Insert(user);
