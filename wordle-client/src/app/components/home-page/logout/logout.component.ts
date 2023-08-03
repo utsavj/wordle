@@ -1,3 +1,4 @@
+import { LoginService } from './../../../services/login.service';
 import { Component, OnInit } from "@angular/core";
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from "@angular/core";
 })
 
 export class LogoutComponent implements OnInit {
-  
-  constructor() { 
 
+  public name = "";
+  
+  constructor(
+    private loginService: LoginService
+  ) { 
+    this.name = this.loginService.userName;
   }
 
   ngOnInit() {
@@ -24,7 +29,8 @@ export class LogoutComponent implements OnInit {
   }
 
   public logoutReq() {
-
+    window.localStorage.removeItem('token');
+    this.loginService.userName = "";
   }
 
 

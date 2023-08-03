@@ -6,8 +6,7 @@ import { LoginService } from "src/app/services/login.service";
 @Component({
   selector: "app-login-signup",
   templateUrl: "./login-signup.component.html",
-  styleUrls: ["./login-signup.component.scss"],
-  providers: [LoginService]
+  styleUrls: ["./login-signup.component.scss"]
 })
 
 export class LoginSignupComponent implements OnInit {
@@ -33,15 +32,19 @@ export class LoginSignupComponent implements OnInit {
   }
 
   public SignUpReq() {
-    console.log(this.name.value);
-    console.log(this.email.value);
-    console.log(this.password.value);
     this.user.import(this.name.value, this.email.value, this.password.value);
-    this.loginService.signUp(this.user).subscribe();
+    this.loginService.signUp(this.user).subscribe((res) => {
+      window.localStorage.setItem("token", res.token);
+      this.loginService.isLoggedIn = true;
+    });
   }
 
   public LogInReq() {
-    console.log(this.email.value);
-    console.log(this.password.value);
+    this.user.import("", this.email.value, this.password.value);
+    this.loginService.logIn(this.user).subscribe((res) => {
+      window.localStorage.setItem("token", res.token);
+      this.loginService.userName = res.name;
+      this.loginService.isLoggedIn = true;
+    });
   }
 }

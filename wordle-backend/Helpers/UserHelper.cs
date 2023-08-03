@@ -33,9 +33,9 @@ public sealed class UserHelper
         return await _dbContext.User.ToListAsync();
     }
 
-    public async Task<UserModel> FindOne(int id)
+    public async Task<UserModel> GetUser(string EmailId)
     {
-        return await _dbContext.User.FirstOrDefaultAsync(x => x.Id == id);
+        return await _dbContext.User.FirstOrDefaultAsync(x => x.EmailId == EmailId);
     }
 
     public async Task<int> Insert(UserModel user)
