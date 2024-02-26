@@ -1,4 +1,6 @@
+using Helpers;
 using Microsoft.EntityFrameworkCore;
+using Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<UserHelper>();
+builder.Services.AddScoped<HashingHelper>();
+builder.Services.AddScoped<JwtHelper>();
 
 var app = builder.Build();
 
@@ -28,6 +32,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseAuthenticationMiddleware();
 
 app.MapControllers();
 
