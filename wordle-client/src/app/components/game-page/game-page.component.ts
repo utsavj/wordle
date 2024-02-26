@@ -1,9 +1,10 @@
 import { Component, HostListener, OnInit } from "@angular/core";
-import { allowedWords } from "D:/Projects/Wordle/wordle-client/src/words";
-import { wordleWords } from "D:/Projects/Wordle/wordle-client/src/wordleWords";
+import { allowedWords } from "src/words";
+import { wordleWords } from "src/wordleWords";
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import { SuccessDialogComponent } from "./success-dialog/success-dialog.component";
 import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
+import { ScoringService } from "src/app/services/scoring.service";
 
 const REGEX_ALPHABET = "/^[A-Za-z]+$/";
 @Component({
@@ -13,7 +14,7 @@ const REGEX_ALPHABET = "/^[A-Za-z]+$/";
 })
 
 export class GamePageComponent implements OnInit {
-  
+
   public enteredCharacter: string = "";
   public activeGridRow = 0;
   public grid: [string[]] = [[]];
@@ -27,8 +28,9 @@ export class GamePageComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
-  ) { 
+    public snackBar: MatSnackBar,
+    public scoringService: ScoringService
+  ) {
       this.incorrectLetters = new Map<string, string>();
       this.guessedCorrect = false;
   }
@@ -65,7 +67,7 @@ export class GamePageComponent implements OnInit {
 
   public checkGuessWord() {
     const activeRow = this.grid[this.activeGridRow];
-    
+
     if(activeRow.length === 5) {
       if (!this.allowedWords.includes(activeRow.join('').toLowerCase())) {
         this.openUnsuccessSnackbar("Not in word list", "OK", {duration: 2000, verticalPosition: "top"});
@@ -123,6 +125,7 @@ export class GamePageComponent implements OnInit {
 
   public openSuccessDialog() {
     this.dialog.open(SuccessDialogComponent);
+    this.scoringService.submitScore(this.activeGridRow);
   }
 
   public createColorGrid(h: number, w: number, val: string) {
