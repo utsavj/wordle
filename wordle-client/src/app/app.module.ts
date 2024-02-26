@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { LogoutComponent } from './components/home-page/logout/logout.component';
 import { InstructionsComponent } from './components/instructions/instructions.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PerformanceChartComponent } from './performance-chart/performance-chart.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     PageNotFoundComponent,
     LoginSignupComponent,
     LogoutComponent,
-    InstructionsComponent
+    InstructionsComponent,
+    PerformanceChartComponent
   ],
   imports: [
     BrowserModule,

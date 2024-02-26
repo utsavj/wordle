@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { LoginSignupComponent } from "src/app/components/home-page/login-signup/login-signup.component";
 import { InstructionsComponent } from "src/app/components/instructions/instructions.component";
+import { PerformanceChartComponent } from "src/app/performance-chart/performance-chart.component";
 import { LoginService } from "src/app/services/login.service";
 
 @Component({
@@ -31,6 +32,6 @@ export class HomePageComponent implements OnInit {
   }
 
   public openPerformanceDialog() {
-
+    this.dialog.open(PerformanceChartComponent);
   }
 }
