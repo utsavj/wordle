@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "client",
+        "type": "npm",
+        "script": "start",
+        "runOptions": {
+          "runOn": "folderOpen"
+        },
+        "options": {
+            "cwd": "wordle-client"
+          }
+      },
+      {
+        "label": "backend",
+        "command": "dotnet run",
+        "type": "shell",
+        "runOptions": {
+          "runOn": "folderOpen"
+        },
+        "options": {
+            "cwd": "wordle-backend"
+          }
+      },
+      {
+        "label": "nginx",
+        "command": "C:/Projects/wordle/nginx-1.24.0/nginx.exe",
+        "type": "shell",
+        "runOptions": {
+          "runOn": "folderOpen"
+        },
+        "options": {
+            "cwd": "nginx-1.24.0"
+          }
+      }
+    ]
+  }
