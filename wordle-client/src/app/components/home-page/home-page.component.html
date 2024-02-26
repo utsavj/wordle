@@ -1,10 +1,15 @@
 <div class="greetings">
-    <div class="greeting-line-1">Hi,</div>
+    <div class="greeting-line-1">Hi, {{loginService.userName}}</div>
     <div class="greeting-line-2">Ready to Wordle?</div>
 </div>
 
 <div class="nav-btn-wrapper">
-    <button mat-button (click)="openLoginDialog()" class="login-btn">Login</button>
+    <ng-container *ngIf="!loginService.isLoggedIn">
+        <button mat-button (click)="openLoginDialog()" class="login-btn">Login</button>
+    </ng-container>
+    <ng-container *ngIf="loginService.isLoggedIn">
+        <button mat-button (click)="openPerformanceDialog()" class="login-btn">Performance</button>
+    </ng-container>
     <button mat-button (click)="openInstructionsDialog()" class="how-to-play-btn">How to play?</button>
     <a routerLink="/play" routerLinkActive="active">
         <button mat-button class="play-btn">

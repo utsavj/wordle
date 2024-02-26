@@ -5,7 +5,7 @@ import { GamePageComponent } from './components/game-page/game-page.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomePageComponent, title: "Home", pathMatch: 'full', 
+  { path: 'home', component: HomePageComponent, title: "Home", pathMatch: 'full',
     children: [
       { path: 'play', component: GamePageComponent, title: "Wordle", pathMatch: 'full' }
     ]},

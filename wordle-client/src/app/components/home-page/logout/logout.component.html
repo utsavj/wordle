@@ -1,6 +1,9 @@
 <div id="account-container">
-    <h2>{{name}}</h2>
-    <div class="logout-btn-wrapper">
+    <h2>{{loginService.userName}}</h2>
+    <div *ngIf="!loginService.isLoggedIn" class="login-btn-wrapper">
+        <button mat-raised-button (click)="loginDialog()">Log In</button>
+    </div>
+    <div *ngIf="loginService.isLoggedIn" class="logout-btn-wrapper">
         <button mat-raised-button (click)="logoutReq()">Log Out</button>
     </div>
 </div>

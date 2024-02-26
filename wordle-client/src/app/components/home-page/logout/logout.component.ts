@@ -10,11 +10,10 @@ import { Component, OnInit } from "@angular/core";
 export class LogoutComponent implements OnInit {
 
   public name = "";
-  
+
   constructor(
-    private loginService: LoginService
-  ) { 
-    this.name = this.loginService.userName;
+    public loginService: LoginService
+  ) {
   }
 
   ngOnInit() {
@@ -29,9 +28,13 @@ export class LogoutComponent implements OnInit {
   }
 
   public logoutReq() {
-    window.localStorage.removeItem('token');
-    this.loginService.userName = "";
+    this.loginService.logout().subscribe(res => {
+      this.loginService.userName = "";
+      this.loginService.isLoggedIn = false;
+    });
   }
 
-
+  public loginDialog() {
+    this.loginService.openDialog();
+  }
 }

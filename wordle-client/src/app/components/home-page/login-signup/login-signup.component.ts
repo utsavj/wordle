@@ -10,7 +10,7 @@ import { LoginService } from "src/app/services/login.service";
 })
 
 export class LoginSignupComponent implements OnInit {
-  
+
   public errorMsg = "You must enter valid value";
   public name = new FormControl('', [Validators.required]);
   public email = new FormControl('', [Validators.required, Validators.email]);
@@ -22,7 +22,7 @@ export class LoginSignupComponent implements OnInit {
   constructor(
     fb: FormBuilder,
     private loginService: LoginService
-  ) { 
+  ) {
     this.loginForm = fb.group({email: "", password: ""});
     this.signupForm = fb.group({name: "", email: "", password: ""});
   }
@@ -34,17 +34,18 @@ export class LoginSignupComponent implements OnInit {
   public SignUpReq() {
     this.user.import(this.name.value, this.email.value, this.password.value);
     this.loginService.signUp(this.user).subscribe((res) => {
-      window.localStorage.setItem("token", res.token);
+      this.loginService.userName = res.name;
       this.loginService.isLoggedIn = true;
+      this.loginService.closeLoginPopup();
     });
   }
 
   public LogInReq() {
     this.user.import("", this.email.value, this.password.value);
     this.loginService.logIn(this.user).subscribe((res) => {
-      window.localStorage.setItem("token", res.token);
       this.loginService.userName = res.name;
       this.loginService.isLoggedIn = true;
+      this.loginService.closeLoginPopup();
     });
   }
 }

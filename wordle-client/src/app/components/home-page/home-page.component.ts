@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-import { LoginSignupComponent } from "./login-signup/login-signup.component";
-import { InstructionsComponent } from "../instructions/instructions.component";
+import { LoginSignupComponent } from "src/app/components/home-page/login-signup/login-signup.component";
+import { InstructionsComponent } from "src/app/components/instructions/instructions.component";
+import { LoginService } from "src/app/services/login.service";
 
 @Component({
   selector: "app-home-page",
@@ -10,10 +11,10 @@ import { InstructionsComponent } from "../instructions/instructions.component";
 })
 
 export class HomePageComponent implements OnInit {
-  
   constructor(
-    public dialog: MatDialog
-  ) { 
+    public dialog: MatDialog,
+    public loginService: LoginService
+  ) {
 
   }
 
@@ -22,10 +23,14 @@ export class HomePageComponent implements OnInit {
   }
 
   public openLoginDialog() {
-    this.dialog.open(LoginSignupComponent);
+    this.loginService.openDialog();
   }
 
   public openInstructionsDialog() {
     this.dialog.open(InstructionsComponent);
+  }
+
+  public openPerformanceDialog() {
+
   }
 }

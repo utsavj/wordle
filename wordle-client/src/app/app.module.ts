@@ -7,7 +7,7 @@ import { GamePageComponent } from './components/game-page/game-page.component';
 import { WordleGridComponent } from './components/game-page/wordle-grid/wordle-grid.component';
 import { KeyboardComponent } from './components/game-page/keyboard/keyboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -48,7 +48,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: MatDialogRef, useValue:{}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

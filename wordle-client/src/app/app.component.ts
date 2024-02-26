@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LogoutComponent } from './components/home-page/logout/logout.component';
 import { InstructionsComponent } from './components/instructions/instructions.component';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +13,14 @@ export class AppComponent {
   title = 'wordle';
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private loginService: LoginService
   ) {
 
+  }
+
+  public ngOnInit() {
+    this.loginService.isUserLoggedIn();
   }
 
   public openLogoutComponent() {
