@@ -18,6 +18,8 @@ export class LoginSignupComponent implements OnInit {
   public user: UserModel = new UserModel();
   public loginForm: FormGroup;
   public signupForm: FormGroup;
+  public hideLoginPassword = true;
+  public hideSignupPassword = true;
 
   constructor(
     fb: FormBuilder,

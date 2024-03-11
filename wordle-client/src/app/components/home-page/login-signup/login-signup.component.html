@@ -1,5 +1,5 @@
 <div class="login-container">
-    <mat-tab-group>
+    <mat-tab-group color="accent">
         <mat-tab label="Login">
             <form [formGroup]="loginForm">
                 <div class="email-field-wrapper">
@@ -12,12 +12,12 @@
                 <div class="password-field-wrapper">
                     <mat-form-field>
                         <mat-label>Password</mat-label>
-                        <input matInput [formControl]="password" required>
+                        <input matInput [formControl]="password" required [type]=" hideLoginPassword ? 'password' : 'text'">
                         <mat-error *ngIf="password.invalid">{{errorMsg}}</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="login-btn-wrapper">
-                    <button mat-raised-button (click)="LogInReq()">Log In</button>
+                    <button class="login-btn" mat-raised-button (click)="LogInReq()">Log In</button>
                 </div>
             </form>
         </mat-tab>
@@ -40,12 +40,12 @@
                 <div class="password-field-wrapper">
                     <mat-form-field>
                         <mat-label>Password</mat-label>
-                        <input matInput [formControl]="password" required>
+                        <input matInput [formControl]="password" required [type]=" hideSignupPassword ? 'password' : 'text'">
                         <mat-error *ngIf="password.invalid">{{errorMsg}}</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="signup-btn-wrapper">
-                    <button mat-raised-button (click)="SignUpReq()">Sign Up</button>
+                    <button class="signup-btn" mat-raised-button (click)="SignUpReq()">Sign Up</button>
                 </div>
             </form>
         </mat-tab>
