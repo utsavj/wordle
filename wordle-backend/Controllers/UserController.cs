@@ -92,5 +92,13 @@ namespace wordle_backend.Controllers
             _scoringHelper.SaveScore(score, userGUID);
             return Ok();
         }
+
+        [HttpGet("score")]
+        public IActionResult GetScore()
+        {
+            string userGUID = _jwtHelper.GetGUIDFromToken(HttpContext);
+            List<int> monthlyScore = _scoringHelper.GetScoreForCurrentUser(userGUID);
+            return Ok(monthlyScore);
+        }
     }
 }

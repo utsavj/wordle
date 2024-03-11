@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SUBMIT_SCORE } from '../ApiConstants';
+import { GET_SCORE, SUBMIT_SCORE } from '../ApiConstants';
 import { LoginService } from './login.service';
 import { Observable } from 'rxjs';
 
@@ -16,5 +16,8 @@ export class ScoringService {
 
   public submitScore(rowNumber: number): Observable<any> {
     return this.http.post(SUBMIT_SCORE, rowNumber);
+  }
+  public getScore(): Observable<any> {
+    return this.http.get(GET_SCORE);
   }
 }

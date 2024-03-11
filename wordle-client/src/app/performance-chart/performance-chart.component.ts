@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { MONTHS } from '../EnumConstants';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-performance-chart',
@@ -10,9 +11,10 @@ import { MONTHS } from '../EnumConstants';
 export class PerformanceChartComponent {
   public chart: any;
 
-  constructor() {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     Chart.register(...registerables);
   }
+
 
   ngOnInit() {
     this.chart = new Chart('canvas', {
@@ -22,7 +24,7 @@ export class PerformanceChartComponent {
         datasets: [
           {
             label: 'Attempts to Guess',
-            data: [6, 5, 3, 5, 2, 3],
+            data: this.data.res,
             borderWidth: 1,
           },
         ],
