@@ -1,3 +1,15 @@
 app-keyboard {
     margin-top: 20px;
 }
+
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+
+    .start-new-btn {
+        width: 120px;
+        margin-top: 20px;
+        border-radius: 5px;
+        background-color: darkcyan;
+    }
+}

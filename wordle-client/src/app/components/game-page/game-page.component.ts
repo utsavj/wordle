@@ -6,6 +6,7 @@ import { SuccessDialogComponent } from "./success-dialog/success-dialog.componen
 import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { ScoringService } from "src/app/services/scoring.service";
 import { LoginService } from "src/app/services/login.service";
+import { Router } from "@angular/router";
 
 const REGEX_ALPHABET = "/^[A-Za-z]+$/";
 @Component({
@@ -31,7 +32,8 @@ export class GamePageComponent implements OnInit {
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
     public scoringService: ScoringService,
-    public loginService: LoginService
+    public loginService: LoginService,
+    public router: Router
   ) {
       this.incorrectLetters = new Map<string, string>();
       this.guessedCorrect = false;
@@ -87,7 +89,7 @@ export class GamePageComponent implements OnInit {
           activeRow.forEach((letter: string, indexInGuessWord: number) => {
             indexOfCorrectLetter = wordleArray.indexOf(letter.toLowerCase());
 
-            if (indexOfCorrectLetter >= 0 && wordleArray[indexInGuessWord] === letter) {
+            if (indexOfCorrectLetter >= 0 && wordleArray[indexInGuessWord] === letter.toLowerCase()) {
               wordleArray[indexOfCorrectLetter] = "";
               this.colorGrid[this.activeGridRow][indexInGuessWord] = "correct-pos";
             }
@@ -157,5 +159,11 @@ export class GamePageComponent implements OnInit {
       wordArray.push(word[i]);
     }
     return wordArray;
+  }
+
+  public startNew(){
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/play']);
+  });
   }
 }
