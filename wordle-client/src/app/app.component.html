@@ -3,7 +3,7 @@
   <span (click)="openInstructionsComponent()" class="material-symbols-outlined instruction-icon">
     help
   </span>
-  <span (click)="openLogoutComponent()" class="material-symbols-outlined user-acccount-icon" id="user-account-icon">
+  <span *ngIf="loginService.isLoggedIn" (click)="openLogoutComponent()" class="material-symbols-outlined user-acccount-icon" id="user-account-icon">
     account_circle
   </span>
 </header>

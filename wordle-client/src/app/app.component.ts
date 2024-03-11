@@ -14,7 +14,7 @@ export class AppComponent {
 
   constructor(
     public dialog: MatDialog,
-    private loginService: LoginService
+    public loginService: LoginService
   ) {
 
   }
