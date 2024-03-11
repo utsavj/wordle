@@ -23,16 +23,19 @@ export class PerformanceChartComponent {
         labels: MONTHS,
         datasets: [
           {
-            label: 'Attempts to Guess',
-            data: this.data.res,
+            label: 'Least Attempts to Guess',
+            data: this.data,
             borderWidth: 1,
+            backgroundColor: 'rgb(0 139 139)',
           },
         ],
       },
       options: {
+        aspectRatio: 690/345,
         scales: {
           y: {
             beginAtZero: true,
+            max: 6,
           },
         },
       },
