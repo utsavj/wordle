@@ -1,3 +1,4 @@
+import { MatDialogRef } from '@angular/material/dialog';
 import { LoginService } from './../../../services/login.service';
 import { Component, OnInit } from "@angular/core";
 
@@ -12,7 +13,8 @@ export class LogoutComponent implements OnInit {
   public name = "";
 
   constructor(
-    public loginService: LoginService
+    public loginService: LoginService,
+    public dialogRef: MatDialogRef<LogoutComponent>
   ) {
   }
 
@@ -31,6 +33,7 @@ export class LogoutComponent implements OnInit {
     this.loginService.logout().subscribe(res => {
       this.loginService.userName = "";
       this.loginService.isLoggedIn = false;
+      this.dialogRef.close();
     });
   }
 

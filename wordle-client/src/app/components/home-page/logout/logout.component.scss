@@ -1,3 +1,16 @@
 .account-container {
     position: absolute;
 }
+.username {
+    color: black;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 20px;
+}
+.logout-btn-wrapper {
+    margin-top: 10px;
+    text-align: center;
+}
+.login-btn, .logout-btn {
+    background: darkcyan;
+}
