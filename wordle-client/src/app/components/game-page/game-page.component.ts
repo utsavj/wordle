@@ -5,6 +5,7 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angula
 import { SuccessDialogComponent } from "./success-dialog/success-dialog.component";
 import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { ScoringService } from "src/app/services/scoring.service";
+import { LoginService } from "src/app/services/login.service";
 
 const REGEX_ALPHABET = "/^[A-Za-z]+$/";
 @Component({
@@ -29,7 +30,8 @@ export class GamePageComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    public scoringService: ScoringService
+    public scoringService: ScoringService,
+    public loginService: LoginService
   ) {
       this.incorrectLetters = new Map<string, string>();
       this.guessedCorrect = false;
@@ -125,7 +127,9 @@ export class GamePageComponent implements OnInit {
 
   public openSuccessDialog() {
     this.dialog.open(SuccessDialogComponent);
-    this.scoringService.submitScore(this.activeGridRow);
+    if (this.loginService.isLoggedIn){
+      this.scoringService.submitScore(this.activeGridRow + 1).subscribe(res => console.log("Success"));
+    }
   }
 
   public createColorGrid(h: number, w: number, val: string) {

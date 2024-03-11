@@ -67,6 +67,8 @@ public sealed class UserHelper
     {
         user.Password = HashingHelper.Hash(user.Password);
         await Insert(user);
+        ScoringHelper _scoringHelper = new ScoringHelper();
+        _scoringHelper.CreateScoreCollection(user.GUID);
     }
 
     public async Task<UserModel> Authenticate(UserModel claimedUser)

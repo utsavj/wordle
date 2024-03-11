@@ -56,4 +56,15 @@ public class JwtHelper
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
+
+    public string GetGUIDFromToken(HttpContext context)
+    {
+        string? jwtToken = context.Request.Cookies["access_token"];
+        if(!string.IsNullOrEmpty(jwtToken) && CheckTokenIsValid(jwtToken))
+        {
+            var token = new JwtSecurityTokenHandler().ReadJwtToken(jwtToken);
+            return token.Claims.First(c => c.Type == "id").Value;
+        }
+        return string.Empty;
+    }
 }

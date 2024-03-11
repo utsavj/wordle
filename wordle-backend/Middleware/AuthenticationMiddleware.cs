@@ -24,6 +24,10 @@ public class AuthenticationMiddleware
         {
             await _next(context);
         }
+        else
+        {
+            throw new UnauthorizedAccessException();
+        }
     }
 
     public async Task<bool> VerifyUser(HttpContext context, UserHelper userHelper, JwtHelper jwtHelper)
@@ -63,10 +67,8 @@ public class AuthenticationMiddleware
         {
             IMongoCollection<Routes> collection = MongoDBConnector.client.GetDatabase("Routes").GetCollection<Routes>("RestrictedRoutes");
             var routes = collection.Find(c => c.routeType == "allowedRoutes").FirstOrDefault();
-            // string result = doc.ToJson();
-            // Routes routes = JsonSerializer.Deserialize<Routes>(result);
             string endpoint = context.Request.Path;
-            if (routes.routes.Contains(endpoint))
+            if (!routes.routes.Contains(endpoint))
             {
                 return true;
             }

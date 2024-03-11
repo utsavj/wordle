@@ -1,10 +1,7 @@
 using Helpers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 using Models;
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace wordle_backend.Controllers
 {
@@ -16,6 +13,7 @@ namespace wordle_backend.Controllers
         private string JWTKey;
         private readonly UserHelper _userHelper;
         private readonly JwtHelper _jwtHelper;
+        private readonly ScoringHelper _scoringHelper;
 
         public UserController(UserHelper userHelper, IConfiguration config)
         {
@@ -23,6 +21,7 @@ namespace wordle_backend.Controllers
             _config = config;
             _jwtHelper = new JwtHelper(userHelper, config);
             JWTKey = _config["Jwt:Key"];
+            _scoringHelper = new ScoringHelper();
         }
 
         [HttpGet("Users")]
@@ -87,10 +86,10 @@ namespace wordle_backend.Controllers
         }
 
         [HttpPost("score")]
-        public IActionResult SaveScore()
+        public IActionResult SaveScore([FromBody] int score)
         {
-            ScoringHelper scoringHelper = new ScoringHelper();
-            scoringHelper.SaveScore();
+            string userGUID = _jwtHelper.GetGUIDFromToken(HttpContext);
+            _scoringHelper.SaveScore(score, userGUID);
             return Ok();
         }
     }
