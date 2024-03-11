@@ -11,6 +11,6 @@ public class UserScore
     public UserScore(string GUID)
     {
         userGUID = GUID;
-        monthlyScore = Enumerable.Repeat(0, 7).ToList();
+        monthlyScore = Enumerable.Repeat(0, 12).ToList();
     }
 }
