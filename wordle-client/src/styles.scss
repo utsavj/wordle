@@ -38,4 +38,10 @@ app-success-dialog {
     position: absolute !important;
     right: 24px;
     top: 40px;
+    height: 80px;
+    width: 120px;
+}
+
+.mat-mdc-tab-labels {
+    background: lightgrey;
 }
