@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Chart, registerables } from 'chart.js';
 import { MONTHS } from '../EnumConstants';
 
 @Component({
@@ -10,7 +10,9 @@ import { MONTHS } from '../EnumConstants';
 export class PerformanceChartComponent {
   public chart: any;
 
-  constructor() {}
+  constructor() {
+    Chart.register(...registerables);
+  }
 
   ngOnInit() {
     this.chart = new Chart('canvas', {
@@ -20,7 +22,7 @@ export class PerformanceChartComponent {
         datasets: [
           {
             label: 'Attempts to Guess',
-            data: [12, 19, 3, 5, 2, 3],
+            data: [6, 5, 3, 5, 2, 3],
             borderWidth: 1,
           },
         ],
