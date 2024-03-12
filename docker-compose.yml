@@ -1,0 +1,42 @@
+services:
+  backend:
+    build:
+      context: wordle-backend
+    ports:
+      - 8080:8080
+    environment:
+       - ASPNETCORE_ENVIRONMENT=Development
+       - ASPNETCORE_URLS=http://localhost:8080
+  frontend:
+    build:
+      context: wordle-client
+    ports:
+      - 4200:4200
+    volumes:
+      - ./angular:/project
+      - /project/node_modules
+  mariadb:
+    image: mariadb:11.2.3
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    volumes:
+      - mariadb-data:/var/lib/mysql
+  mongodb:
+    image: mongo:7.0.5-jammy
+    restart: always
+    volumes:
+      - mongo_data:/data/db
+    expose:
+      - 27017
+  nginx:
+    image: nginx:1.24.0-alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx-1.24.0/conf/nginx.conf:/etc/nginx/nginx.conf
+volumes:
+  mariadb-data:
+  mongo_data:
