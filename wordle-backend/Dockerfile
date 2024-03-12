@@ -5,11 +5,11 @@ WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY *.csproj .
-RUN dotnet restore -a arm64
+RUN dotnet restore
 
 # copy and publish app and libraries
 COPY . .
-RUN dotnet publish -a arm64 --no-restore -o /app
+RUN dotnet publish --no-restore -o /app
 
 
 # final stage/image
