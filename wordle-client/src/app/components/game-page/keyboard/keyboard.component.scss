@@ -25,9 +25,24 @@
                 height: 54px;
                 aspect-ratio: auto;
             }
-            
+
             &.incorrect-guess {
                 background-color: #686868;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .keyboard-btn {
+                height: 40px;
+
+                &.ENTER {
+                    height: 40px;
+                    aspect-ratio: auto;
+                }
+                &.CLEAR {
+                    height: 40px;
+                    aspect-ratio: auto;
+                }
             }
         }
     }
