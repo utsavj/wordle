@@ -13,7 +13,7 @@ export class LoginSignupComponent implements OnInit {
 
   public errorMsg = "You must enter valid value";
   public name = new FormControl('', [Validators.required]);
-  public email = new FormControl('', [Validators.required, Validators.email]);
+  public email = new FormControl('', [Validators.required]);
   public password = new FormControl('', [Validators.required]);
   public user: UserModel = new UserModel();
   public loginForm: FormGroup;
