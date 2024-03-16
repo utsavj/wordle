@@ -16,9 +16,9 @@ export class KeyboardComponent implements OnInit {
 
   public keyboardBtnLine1 = ["Q","W","E","R","T","Y","U","I","O","P"];
   public keyboardBtnLine2 = ["A","S","D","F","G","H","J","K","L"];
-  public keyboardBtnLine3 = ["ENTER","Z","X","C","V","B","N","M","CLEAR"];
+  public keyboardBtnLine3 = ["CLEAR","Z","X","C","V","B","N","M","ENTER"];
 
-  constructor() { 
+  constructor() {
 
   }
 
@@ -35,7 +35,7 @@ export class KeyboardComponent implements OnInit {
         case "CLEAR":
             this.clearLastCharacter();
             break;
-        default: 
+        default:
           this.enteredCharacterEmitter.emit(btn);
           break;
       }
