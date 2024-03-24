@@ -1,7 +1,7 @@
 # Learn about building .NET container images:
 # https://github.com/dotnet/dotnet-docker/blob/main/samples/README.md
-FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /source
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
+WORKDIR /App
 
 # copy csproj and restore as distinct layers
 COPY *.csproj .
@@ -9,12 +9,11 @@ RUN dotnet restore
 
 # copy and publish app and libraries
 COPY . .
-RUN dotnet publish --no-restore -o /app
+RUN dotnet publish --property:PublishDir=/out
 
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/runtime:8.0
-WORKDIR /app
-COPY --from=build /app .
-USER $APP_UID
-ENTRYPOINT ["./wordle-backend"]
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /App
+COPY --from=build-env /out .
+ENTRYPOINT ["dotnet", "wordle-backend.dll"]
