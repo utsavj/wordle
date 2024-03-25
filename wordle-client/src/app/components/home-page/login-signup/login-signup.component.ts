@@ -43,6 +43,9 @@ export class LoginSignupComponent implements OnInit {
       this.loginService.userName = res.name;
       this.loginService.isLoggedIn = true;
       this.loginService.closeLoginPopup();
+    },
+    err => {
+      this.preloaderService.hide();
     });
   }
 
@@ -54,6 +57,9 @@ export class LoginSignupComponent implements OnInit {
       this.loginService.userName = res.name;
       this.loginService.isLoggedIn = true;
       this.loginService.closeLoginPopup();
+    },
+    err => {
+      this.preloaderService.hide();
     });
   }
 }

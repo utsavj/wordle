@@ -38,6 +38,9 @@ export class LogoutComponent implements OnInit {
       this.loginService.userName = "";
       this.loginService.isLoggedIn = false;
       this.dialogRef.close();
+    },
+    err => {
+      this.preloaderService.hide();
     });
   }
 
