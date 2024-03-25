@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { UserModel } from "src/app/Models/UserModel";
 import { LoginService } from "src/app/services/login.service";
+import { PreloaderService } from "src/app/services/preloader.service";
 
 @Component({
   selector: "app-login-signup",
@@ -23,7 +24,8 @@ export class LoginSignupComponent implements OnInit {
 
   constructor(
     fb: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    public preloaderService: PreloaderService
   ) {
     this.loginForm = fb.group({email: "", password: ""});
     this.signupForm = fb.group({name: "", email: "", password: ""});
@@ -35,7 +37,9 @@ export class LoginSignupComponent implements OnInit {
 
   public SignUpReq() {
     this.user.import(this.name.value, this.email.value, this.password.value);
+    this.preloaderService.show();
     this.loginService.signUp(this.user).subscribe((res) => {
+      this.preloaderService.hide();
       this.loginService.userName = res.name;
       this.loginService.isLoggedIn = true;
       this.loginService.closeLoginPopup();
@@ -44,7 +48,9 @@ export class LoginSignupComponent implements OnInit {
 
   public LogInReq() {
     this.user.import("", this.email.value, this.password.value);
+    this.preloaderService.show();
     this.loginService.logIn(this.user).subscribe((res) => {
+      this.preloaderService.hide();
       this.loginService.userName = res.name;
       this.loginService.isLoggedIn = true;
       this.loginService.closeLoginPopup();

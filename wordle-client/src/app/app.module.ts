@@ -21,6 +21,7 @@ import { LogoutComponent } from './components/home-page/logout/logout.component'
 import { InstructionsComponent } from './components/instructions/instructions.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PerformanceChartComponent } from './performance-chart/performance-chart.component';
+import { FullscreenOverlayContainer, OverlayContainer } from '@angular/cdk/overlay';
 
 
 @NgModule({
@@ -50,7 +51,9 @@ import { PerformanceChartComponent } from './performance-chart/performance-chart
     MatInputModule,
     HttpClientModule
   ],
-  providers: [{provide: MatDialogRef, useValue:{}}],
+  providers: [
+    {provide: MatDialogRef, useValue:{}},
+    {provide: OverlayContainer, useClass: FullscreenOverlayContainer}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

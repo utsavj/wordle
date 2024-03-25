@@ -1,6 +1,7 @@
 import { MatDialogRef } from '@angular/material/dialog';
 import { LoginService } from './../../../services/login.service';
 import { Component, OnInit } from "@angular/core";
+import { PreloaderService } from 'src/app/services/preloader.service';
 
 @Component({
   selector: "app-logout",
@@ -14,7 +15,8 @@ export class LogoutComponent implements OnInit {
 
   constructor(
     public loginService: LoginService,
-    public dialogRef: MatDialogRef<LogoutComponent>
+    public dialogRef: MatDialogRef<LogoutComponent>,
+    public preloaderService: PreloaderService
   ) {
   }
 
@@ -30,7 +32,9 @@ export class LogoutComponent implements OnInit {
   }
 
   public logoutReq() {
+    this.preloaderService.show();
     this.loginService.logout().subscribe(res => {
+      this.preloaderService.hide();
       this.loginService.userName = "";
       this.loginService.isLoggedIn = false;
       this.dialogRef.close();
