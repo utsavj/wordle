@@ -15,7 +15,7 @@ public class JwtHelper
     {
         _userHelper = userHelper;
         _config = config;
-        JWTKey = _config["Jwt:Key"];
+        JWTKey = Environment.GetEnvironmentVariable("JwtKey");
     }
 
     public bool CheckTokenIsValid(string token)

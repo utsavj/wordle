@@ -20,7 +20,7 @@ namespace wordle_backend.Controllers
             _userHelper = userHelper;
             _config = config;
             _jwtHelper = new JwtHelper(userHelper, config);
-            JWTKey = _config["Jwt:Key"];
+            JWTKey = Environment.GetEnvironmentVariable("JwtKey");
             _scoringHelper = new ScoringHelper();
         }
 
