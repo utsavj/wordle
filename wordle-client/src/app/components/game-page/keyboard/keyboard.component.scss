@@ -17,14 +17,19 @@
             border-radius: 5px;
             cursor: pointer;
             color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             &.ENTER {
                 height: 54px;
                 aspect-ratio: auto;
+                background: darkturquoise;
             }
             &.CLEAR {
                 height: 54px;
                 aspect-ratio: auto;
+                background: darkturquoise;
             }
 
             &.incorrect-guess {
@@ -47,4 +52,8 @@
             }
         }
     }
+}
+
+.material-symbols-outlined{
+    font-size: 20px;
 }

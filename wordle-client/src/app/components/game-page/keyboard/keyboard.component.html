@@ -18,6 +18,16 @@
             class="keyboard-btn {{btn}} {{incorrectLetters.get(btn)}}"
             *ngFor="let btn of keyboardBtnLine3"
             type="button"
-            (click)="keyboardBtnClicked(btn)">{{btn}}</button>
+            (click)="keyboardBtnClicked(btn)">
+                <span *ngIf="btn=='ENTER'" class="material-symbols-outlined">
+                    arrow_forward
+                </span>
+                <span *ngIf="btn=='CLEAR'" class="material-symbols-outlined">
+                    backspace
+                </span>
+                <span *ngIf="btn!='ENTER' && btn !='CLEAR'">
+                    {{btn}}
+                </span>
+        </button>
     </div>
 </div>
